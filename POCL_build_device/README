@@ -13,9 +13,10 @@ one more thing is the “ install ” folder.
 the new pocl result will be stored in this folder.
 
 
-![Alt text](https://github.com/jackndelee/SA_pocl/blob/main/POCL_build_device/doc/asset/POCL1.JPG "Optional title")
+![Alt text](/SA_pocl/blob/main/POCL_build_device/doc/asset/POCL1.JPG "Optional title")
 
 
+<img src="/SA_pocl/blob/main/POCL_build_device/doc/asset/POCL1.JPG" alt="Alt text" title="Optional title">
 
 
 
