@@ -1,9 +1,10 @@
-This project is for POCL for SA
+This project is for POCL for "SA"
 
 not general POCL 
 
 
 How to compile SA POCL 
+========================
 
 For compile changed device “ vortex -> SA ”, you need to compile build_vortex_cc (compiler) and build_vortex_rt (runtime) 
 
