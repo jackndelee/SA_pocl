@@ -4,3 +4,87 @@
 This project is for POCL for "SA", not a general POCL.
 
 You can handle compile & runtime as you want.
+
+
+
+# How to compile SA POCL 
+------------
+
+For compile changed device “ vortex -> SA ”, you need to compile build_vortex_cc (compiler) and build_vortex_rt (runtime) 
+
+go to /SA_pocl/pocl ( my case is /opt/pocl )
+
+you can see folders build_vortex_cc and build_vortex_rt 
+
+one more thing is the “ install ” folder. 
+
+the new pocl result will be stored in this folder.
+
+
+
+
+
+
+
+
+
+
+1. go to  build_vortex_cc for pocl vortex compile 
+
+
+step 1.
+ - cd build_vortex_cc
+ 
+step 2.
+you should set install prefix on your’s path ( home/XXX/XXXX )
+
+-cmake -G Ninja -DCMAKE_INSTALL_PREFIX=/home/XXX/opt/pocl/install/compiler 
+-DCMAKE_BUILD_TYPE=Debug 
+-DOCS_AVAILABLE=ON 
+-DWITH_LLVM_CONFIG=/opt/llvm-riscv/bin/llvm-config 
+
+-DENABLE_VORTEX=ON 
+you have to change this command Vortex -> SA
+-DENABLE_SA=ON
+
+-DBUILD_TESTS=OFF -DPOCL_DEBUG_MESSAGES=ON -DDEFAULT_ENABLE_ICD=OFF ..
+
+step 3
+-cmake --build . --target install
+
+
+
+
+
+
+2. go to build_vortex_rt for pocl vortex runtime
+
+step 1.
+-cd build_vortex_rt
+
+
+
+step 2.
+you should set installed prefix on your’s path ( home/XXX )
+
+-cmake -G Ninja -DHOST_DEVICE_BUILD_HASH=riscv32-unknown-elf 
+-DCMAKE_INSTALL_PREFIX=/home/XXX/opt/pocl/install/runtime 
+-DCMAKE_BUILD_TYPE=Debug 
+-DOCS_AVAILABLE=OFF 
+-DVORTEX_DRIVER_INC=/home/XXX/vortex/driver/include 
+-DVORTEX_DRIVER_LIB=/home/XXX/vortex/driver/stub/libvortex.so 
+
+-DENABLE_VORTEX=ON -DBUILD_TESTS=OFF
+change this command to Vortex -> SA
+-DENABLE_SA=ON -DBUILD_TESTS=OFF
+
+ -DPOCL_DEBUG_MESSAGES=ON -DDEFAULT_ENABLE_ICD=OFF ..
+
+
+step 3.
+-cmake --build . --target install
+
+
+
+then when you go to /opt/pocl/install
+you can see the compiler & runtime which was set for the new device “SA” 
